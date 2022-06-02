@@ -6,6 +6,8 @@ import BatterController from './BatterController';
 export default class GameScene extends BaseScene{
     constructor(el){
         super(el);
+        this.batter = null;
+        this.balls = null;
     }
     initialize(){
         const lightController = new LightController({environment: this.environment});
@@ -14,8 +16,11 @@ export default class GameScene extends BaseScene{
 
         new GroundController({environment: this.environment}, 'https://danielpatrickkoenig.github.io/spirit-of-kovak/dist/dirt_row.png');
 
-        new BatterController({environment: this.environment});
+        this.batter = new BatterController({environment: this.environment});
 
-        new BallCollisionController({environment: this.environment});
+        this.balls = new BallCollisionController({environment: this.environment});
+    }
+    swing(){
+        this.batter.swing();
     }
 }
