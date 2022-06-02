@@ -14,11 +14,10 @@ export default class BatterController extends PlayerController{
         this.rigManager.sequence('leftForearm', 'x', [{value:-50, time:swingSpeed}, {value:-60, time:swingSpeed}]);
         this.rigManager.sequence('torso', 'y', [{value: 0, time:swingSpeed}, {value: 60, time:swingSpeed}]);
         this.rigManager.sequence('neck', 'y', [{value: 0, time:swingSpeed}, {value: -60, time:swingSpeed}]);
-        this.rigManager.currentState = 'swinging';
         await new Promise(resolve => setTimeout(resolve, this.swingTime * 1000 * 1.001));
         this.wait();
     }
-    async wait(){
+    wait(){
         this.rigManager.sequence('rightSholder', 'x', [{value:-20, time:2}]);
         this.rigManager.sequence('leftSholder', 'x', [{value:-20, time:2}]);
         this.rigManager.sequence('rightClavical', 'x', [{value:10, time:2}]);
